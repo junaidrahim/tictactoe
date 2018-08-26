@@ -1,0 +1,1 @@
+1. Resolve the bug that one position cannot be played twice
