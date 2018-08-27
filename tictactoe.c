@@ -8,6 +8,7 @@ void print_matrix(char game[3][3]){ // just to print the game
 }
 
 int check_winner(char game[3][3]){
+    // Checks diagonals
     bool winO_diagonal1 = (game[0][0]=='O') && (game[1][1]=='O') && (game[2][2]=='O');
     bool winO_diagonal2 = (game[0][2]=='O') && (game[1][1]=='O') && (game[2][0]=='O');
 
@@ -21,6 +22,7 @@ int check_winner(char game[3][3]){
         return 2;
     }
     
+    // Checks Rows and Columns simultaneously
     for (int i=0; i<3; i++){
         bool winO_horizontal = (game[i][0]=='O') && (game[i][1]=='O') && (game[i][2]=='O');
         bool winO_vertical   = (game[0][i]=='O') && (game[1][i]=='O') && (game[2][i]=='O');
@@ -29,15 +31,15 @@ int check_winner(char game[3][3]){
         bool winX_vertical   = (game[0][i]=='X') && (game[1][i]=='X') && (game[2][i]=='X');
 
         if (winO_horizontal || winO_vertical){
-            return 1;
+            return 1; // O won
         }
         else if (winX_horizontal || winX_vertical){
-            return 2;
+            return 2; // X won
         }
 
     }
 
-    return 0;
+    return 0; // no winner 
 }
 
 int main(){

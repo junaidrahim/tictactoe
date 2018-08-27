@@ -1,6 +1,9 @@
+# A dictionary of the grid values as tuples
+# {(0,0):'X', (0,1):'O', ...}
 matrix = {(r,c):' ' for r in range(0,3) for c in range(0,3)}
 
 def check_winner(game):
+    # Check Diagonals
     winX_diagonal1 = game[0,0] == game[1,1] == game[2,2] == 'X'
     winX_diagonal2 = game[0,2] == game[1,1] == game[2,0] == 'X'
 
@@ -8,9 +11,9 @@ def check_winner(game):
     winO_diagonal2 = game[0,2] == game[1,1] == game[2,0] == 'O'
 
     if(winO_diagonal1 or winO_diagonal2):
-        return 1
+        return 1   # O won
     elif(winX_diagonal1 or winX_diagonal2):
-        return 2
+        return 2   # X won
 
     for m in range(0,3):
         winX_vertical = game[0,m] == game[1,m] == game[2,m] == 'X'
@@ -20,14 +23,14 @@ def check_winner(game):
         winO_horizontal = game[m,0] == game[m,1] == game[m,2] == 'O'
 
         if(winO_vertical or winO_horizontal):
-            return 1
+            return 1   # O won
         elif(winX_vertical or winX_horizontal):
-            return 2
+            return 2   # X Won
     
-    return 0
+    return 0   # no winner
 
     
-def print_game(game):
+def print_game(game): 
     for i in range(0,3):
         print(" {} | {} | {} \n".format(game[i,0],game[i,1],game[i,2]))
 

@@ -5,6 +5,7 @@ import (
 )
 
 func check_winner(game [3][3]string) int {
+	// Check the diagonals
 	winO_diagonal1 := (game[0][0]=="O") && (game[1][1]=="O") && (game[2][2]=="O")
 	winO_diagonal2 := (game[0][2]=="O") && (game[1][1]=="O") && (game[2][0]=="O")
 
@@ -12,11 +13,12 @@ func check_winner(game [3][3]string) int {
 	winX_diagonal2 := (game[0][2]=="X") && (game[1][1]=="X") && (game[2][0]=="X")
 
 	if (winO_diagonal1 || winO_diagonal2){
-		return 1
+		return 1    // O won
 	} else if (winX_diagonal1 || winX_diagonal2) {
-		return 2
+		return 2    // X won
 	}
 
+	// Check rows and columns simultaneously
 	for i:=0; i<3; i++ {
 		winO_vertical   := (game[0][i]=="O") && (game[1][i]=="O") && (game[2][i]=="O" )
 		winO_horizontal := (game[i][0]=="O") && (game[i][1]=="O") && (game[i][2]=="O")
@@ -25,9 +27,9 @@ func check_winner(game [3][3]string) int {
 		winX_horizontal := (game[i][0]=="X") && (game[i][1]=="X") && (game[i][2]=="X")
 
 		if (winO_horizontal || winO_vertical) {
-			return 1
+			return 1    // O won
 		} else if (winX_horizontal || winX_vertical) {
-			return 2
+			return 2    // X won
 		}
 	}
 
@@ -45,7 +47,7 @@ func print_game(game [3][3]string){
 func main(){
 	var matrix [3][3]string
 
-	for i:=0; i<3; i++{
+	for i:=0; i<3; i++{ // filling up the matrix
 		matrix[i][0] = " "
 		matrix[i][1] = " "
 		matrix[i][2] = " "
