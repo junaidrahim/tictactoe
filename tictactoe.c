@@ -63,15 +63,10 @@ int main(){
             matrix[row][col] = 'O';
             print_matrix(matrix);
 
-            int result = check_winner(matrix);
-            if(result==1){
+            if(check_winner(matrix)==1){
                 printf("O Won\n");
                 break;
-            }
-            else if(result==2){
-                printf("X Won\n");
-                break;
-            }   
+            }  
         }
         else{
             // Odd Turn, X
@@ -83,15 +78,10 @@ int main(){
             matrix[row][col] = 'X';
             print_matrix(matrix);
 
-            int result = check_winner(matrix);
-            if(result==1){
-                printf("O Won\n");
-                break;
-            }
-            else if(result==2){
+            if(check_winner(matrix)==2){
                 printf("X Won\n");
                 break;
-            }    
+            }  
         }
 
     }

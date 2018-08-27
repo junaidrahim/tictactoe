@@ -17,11 +17,12 @@ public class tictactoe{
                 tictac.play('O', Integer.parseInt(player_input[0]), Integer.parseInt(player_input[1]));
                 tictac.print_game();
                 
-                if(tictac.check_winner()==1){
+                int result = tictac.check_winner();
+                if(result==1){
                     System.out.println("O won");
                     break;
                 } 
-                else if (tictac.check_winner()==2){
+                else if (result==2){
                     System.out.println("X won");
                     break;
                 }
@@ -36,11 +37,12 @@ public class tictactoe{
                 tictac.play('X', Integer.parseInt(player_input[0]), Integer.parseInt(player_input[1]));
                 tictac.print_game();
                 
-                if(tictac.check_winner()==1){
+                int result = tictac.check_winner();
+                if(result==1){
                     System.out.println("O won");
                     break;
                 } 
-                else if (tictac.check_winner()==2){
+                else if (result==2){
                     System.out.println("X won");
                     break;
                 }

@@ -5,7 +5,6 @@ import (
 )
 
 func check_winner(game [3][3]string) int {
-
 	winO_diagonal1 := (game[0][0]=="O") && (game[1][1]=="O") && (game[2][2]=="O")
 	winO_diagonal2 := (game[0][2]=="O") && (game[1][1]=="O") && (game[2][0]=="O")
 
@@ -19,7 +18,6 @@ func check_winner(game [3][3]string) int {
 	}
 
 	for i:=0; i<3; i++ {
-
 		winO_vertical   := (game[0][i]=="O") && (game[1][i]=="O") && (game[2][i]=="O" )
 		winO_horizontal := (game[i][0]=="O") && (game[i][1]=="O") && (game[i][2]=="O")
 
@@ -34,7 +32,6 @@ func check_winner(game [3][3]string) int {
 	}
 
 	return 0;
-
 }
 
 func print_game(game [3][3]string){
@@ -55,32 +52,31 @@ func main(){
 	}
 
 	for t:=0; t<9; t++{
-
 		if (t%2 == 0){
 			// Even turn, O
 			var play [2]int
-
 			fmt.Print("Enter Row and Column(O): ")
-			for i:=0; i<2; i++{ fmt.Scan(&play[i]) }
+			
+			for i:=0; i<2; i++{ 
+				fmt.Scan(&play[i]) 
+			}
 
 			matrix[play[0]][play[1]] = "O"
-			
 			print_game(matrix)
-			
 			if (check_winner(matrix)==1){
 				fmt.Println("O Won")
 				break;
 			}
 
 		} else {
-
 			var play [2]int
-
 			fmt.Print("Enter Row and Column(X): ")
-			for i:=0; i<2; i++ { fmt.Scan(&play[i]) }
+
+			for i:=0; i<2; i++ { 
+				fmt.Scan(&play[i]) 
+			}
 
 			matrix[play[0]][play[1]] = "X"
-			
 			print_game(matrix)
 			
 			if (check_winner(matrix)==2){
