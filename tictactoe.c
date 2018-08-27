@@ -8,7 +8,6 @@ void print_matrix(char game[3][3]){ // just to print the game
 }
 
 int check_winner(char game[3][3]){
-    
     bool winO_diagonal1 = (game[0][0]=='O') && (game[1][1]=='O') && (game[2][2]=='O');
     bool winO_diagonal2 = (game[0][2]=='O') && (game[1][1]=='O') && (game[2][0]=='O');
 
@@ -23,7 +22,6 @@ int check_winner(char game[3][3]){
     }
     
     for (int i=0; i<3; i++){
-
         bool winO_horizontal = (game[i][0]=='O') && (game[i][1]=='O') && (game[i][2]=='O');
         bool winO_vertical   = (game[0][i]=='O') && (game[1][i]=='O') && (game[2][i]=='O');
 
@@ -52,7 +50,6 @@ int main(){
     }
 
     for(int t=0; t<9; t++){
-
         if(t%2==0){
             // Even Turn, O
             int row, col;
