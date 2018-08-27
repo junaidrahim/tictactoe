@@ -1,6 +1,6 @@
 import java.util.Scanner;
-public class tictactoe{
 
+public class tictactoe{
     public static void main(String[] args){
 
         Scanner input = new Scanner(System.in);
@@ -45,11 +45,8 @@ public class tictactoe{
                     break;
                 }
             }
-
         }
-
         input.close();
-
     }
 }
 
@@ -74,7 +71,6 @@ class game{
     }
 
     public int check_winner(){
-        
         boolean winO_diagonal1 = (matrix[0][0]=='O') && (matrix[1][1]=='O') && (matrix[2][2]=='O');
         boolean winO_diagonal2 = (matrix[0][2]=='O') && (matrix[1][1]=='O') && (matrix[2][0]=='O');
 
@@ -89,7 +85,6 @@ class game{
         }
 
         for(int i=0; i<3; i++){
-            
             boolean winO_horizontal = (matrix[i][0]=='O') && (matrix[i][1]=='O') && (matrix[i][2]=='O');
             boolean winO_vertical   = (matrix[0][i]=='O') && (matrix[1][i]=='O') && (matrix[2][i]=='O');
             
@@ -106,5 +101,4 @@ class game{
 
         return 0;
     }
-
 }
