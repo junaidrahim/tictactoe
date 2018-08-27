@@ -3,7 +3,7 @@
 using namespace std;
 
 void printGame(char matrix[3][3]){
-    // just prints a 3x3 char martix
+    // just prints a 3x3 char matrix
     for(int j=0; j<3; j++){
         for(int k=0; k<3; k++){
             cout << " ";
@@ -17,73 +17,69 @@ void printGame(char matrix[3][3]){
     }
 }
 
+bool input_validity_check(char game[3][3], int row, int col){
+    if (game[row][col]==' '){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 int checkWinner(char game[3][3]){
-    // 1. Check all horizontal rows
-    // 2. Check all vertical colums
-    // 3. Check the diagonals
+    // Checks diagonals
+    bool winO_diagonal1 = (game[0][0]=='O') && (game[1][1]=='O') && (game[2][2]=='O');
+    bool winO_diagonal2 = (game[0][2]=='O') && (game[1][1]=='O') && (game[2][0]=='O');
 
-    //horizontal check
-    for(int x=0; x<3; x++){
-        bool winX = (game[x][0]=='x') && (game[x][1]=='x') && (game[x][2]=='x');
-
-        bool winO = (game[x][0]=='o') && (game[x][1]=='o') && (game[x][2]=='o');
-        
-        if(winX){
-            return 1;
-        }
-        else if(winO){
-            return 2;
-        }
-    }
-
-    // vertical check
-    for(int y=0; y<3; y++){
-        bool winX = (game[0][y]=='x') && (game[1][y]=='x') && (game[2][y]=='x');
-
-        bool winO = (game[0][y]=='o') && (game[1][y]=='o') && (game[2][y]=='o');
-        
-        if(winX){
-            return 1;
-        }
-        else if(winO){
-            return 2;
-        }
-    }
-
-    // diagonal check
+    bool winX_diagonal1 = (game[0][0]=='X') && (game[1][1]=='X') && (game[2][2]=='X');
+    bool winX_diagonal2 = (game[0][2]=='X') && (game[1][1]=='X') && (game[2][0]=='X');
     
-    bool winX1 = (game[0][2]=='x') && (game[1][1]=='x') && (game[2][0]=='x');
-    bool winX2 = (game[0][0]=='x') && (game[1][1]=='x') && (game[2][2]=='x');
-
-    bool winO1 = (game[0][2]=='o') && (game[1][1]=='o') && (game[2][0]=='o');
-    bool winO2 = (game[0][0]=='o') && (game[1][1]=='o') && (game[2][2]=='o');
-
-    if(winX1 || winX2){
+    if (winO_diagonal1 || winO_diagonal2){
         return 1;
     }
-    else if(winO1 || winO2){
+    else if (winX_diagonal1 || winX_diagonal2){
         return 2;
     }
-    else{
-        return 0;
-    }
-        
+    
+    // Checks Rows and Columns simultaneously
+    for (int i=0; i<3; i++){
+        bool winO_horizontal = (game[i][0]=='O') && (game[i][1]=='O') && (game[i][2]=='O');
+        bool winO_vertical   = (game[0][i]=='O') && (game[1][i]=='O') && (game[2][i]=='O');
+
+        bool winX_horizontal = (game[i][0]=='X') && (game[i][1]=='X') && (game[i][2]=='X');
+        bool winX_vertical   = (game[0][i]=='X') && (game[1][i]=='X') && (game[2][i]=='X');
+
+        if (winO_horizontal || winO_vertical){
+            return 1; // O won
+        }
+        else if (winX_horizontal || winX_vertical){
+            return 2; // X won
+        }
+
+    }    
 }
 
 int main(){
     char matrix[3][3] = {' ',' ',' ',' ',' ',' ',' ',' ',' '};
 
     for(int i=0;i<9;i++){
-        int row,col;
-
         if(i%2==0) {
             // Even Turn. O
+            int r,c;
             cout << "Enter Row and Column(o): " ;
             cin >> r >> c;
 
-            matrix[row][col] = 'o';
-            printGame(matrix);
-            if (checkWinner(matrix) == 2){
+            if(input_validity_check(matrix, r, c)){
+                matrix[r][c] = 'O';
+                printGame(matrix);
+            }
+            else {
+                cout << "Invalid, that position is already taken" << endl;
+                cout << "Play again" << endl;
+                break;
+            }
+
+            if (checkWinner(matrix) == 1){
                 cout << "O won" << endl;
                 break;
             }
@@ -91,13 +87,21 @@ int main(){
 
         else {
             // Odd turn. X
+            int r,c;
             cout << "Enter Row and Column(x): " ;
             cin >> r >> c;
 
-            matrix[row][col] = 'x';
-            printGame(matrix);
-        
-            if (checkWinner(matrix) == 1){
+            if(input_validity_check(matrix, r, c)){
+                matrix[r][c] = 'X';
+                printGame(matrix);
+            }
+            else {
+                cout << "Invalid, that position is already taken" << endl;
+                cout << "Play again" << endl;
+                break;
+            }
+
+            if (checkWinner(matrix) == 2){
                 cout << "X won" << endl;
                 break;
             }   

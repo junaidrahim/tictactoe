@@ -29,10 +29,18 @@ def check_winner(game):
     
     return 0   # no winner
 
-    
+
+def input_validity_check(game, row, col):
+    if game[row,col] == ' ':
+        return True
+    else:
+        return False
+
+
 def print_game(game): 
     for i in range(0,3):
         print(" {} | {} | {} \n".format(game[i,0],game[i,1],game[i,2]))
+
 
 for t in range(0,9):
     if t%2 == 0:
@@ -43,8 +51,13 @@ for t in range(0,9):
         row = int(play[0])
         col = int(play[1])
 
-        matrix[row,col] = 'O'
-        print_game(matrix)
+        if input_validity_check(matrix, row, col):
+            matrix[row,col] = 'O'
+            print_game(matrix)
+        else:
+            print("Invalid, that position is already taken")
+            print("Play again")
+            break
         
         if check_winner(matrix) == 1:
             print("O won")
@@ -58,9 +71,14 @@ for t in range(0,9):
         row = int(play[0])
         col = int(play[1])
 
-        matrix[row,col] = 'X'
-        
-        print_game(matrix)
+        if input_validity_check(matrix, row, col):
+            matrix[row,col] = 'X'
+            print_game(matrix)
+        else:
+            print("Invalid, that position is already taken")
+            print("Play again")
+            break
+
         if check_winner(matrix) == 2:
             print("X won")
             break

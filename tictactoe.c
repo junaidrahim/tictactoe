@@ -7,6 +7,14 @@ void print_matrix(char game[3][3]){ // just to print the game
     }
 }
 
+bool input_validity_check(char game[3][3], int row, int col){
+    if(game[row][col]==' '){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 int check_winner(char game[3][3]){
     // Checks diagonals
     bool winO_diagonal1 = (game[0][0]=='O') && (game[1][1]=='O') && (game[2][2]=='O');
@@ -59,8 +67,15 @@ int main(){
             printf("Enter Row and Column(O): ");
             scanf("%d %d", &row, &col);
 
-            matrix[row][col] = 'O';
-            print_matrix(matrix);
+            if (input_validity_check(matrix,row,col)){
+                matrix[row][col] = 'O';
+                print_matrix(matrix);
+            } 
+            else {
+                printf("Invalid, that position is already taken\n");
+                printf("Play Again\n");
+                break;
+            }
 
             if(check_winner(matrix)==1){
                 printf("O Won\n");
@@ -74,8 +89,15 @@ int main(){
             printf("Enter Row and Column(X): ");
             scanf("%d %d", &row, &col);
 
-            matrix[row][col] = 'X';
-            print_matrix(matrix);
+            if (input_validity_check(matrix,row,col)){
+                matrix[row][col] = 'X';
+                print_matrix(matrix);
+            } 
+            else {
+                printf("Invalid, that position is already taken\n");
+                printf("Play Again\n");
+                break;
+            }
 
             if(check_winner(matrix)==2){
                 printf("X Won\n");

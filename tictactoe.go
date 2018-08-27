@@ -36,6 +36,14 @@ func check_winner(game [3][3]string) int {
 	return 0;
 }
 
+func input_validity_check(game [3][3]string, row int, col int) bool {
+	if (game[row][col]==" "){
+		return true
+	} else {
+		return false
+	}
+}
+
 func print_game(game [3][3]string){
 	for i:=0; i<3; i++{
 		p := game[i][0] + " | " + game[i][1] + " | " + game[i][2]
@@ -63,8 +71,15 @@ func main(){
 				fmt.Scan(&play[i]) 
 			}
 
-			matrix[play[0]][play[1]] = "O"
-			print_game(matrix)
+			if (input_validity_check(matrix, play[0], play[1])){
+				matrix[play[0]][play[1]] = "O"
+				print_game(matrix)
+			} else {
+				fmt.Println("Invalid, that position is already taken")
+				fmt.Println("Play again")
+				break
+			}
+
 			if (check_winner(matrix)==1){
 				fmt.Println("O Won")
 				break;
@@ -78,8 +93,14 @@ func main(){
 				fmt.Scan(&play[i]) 
 			}
 
-			matrix[play[0]][play[1]] = "X"
-			print_game(matrix)
+			if (input_validity_check(matrix, play[0], play[1])){
+				matrix[play[0]][play[1]] = "X"
+				print_game(matrix)
+			} else {
+				fmt.Println("Invalid, that position is already taken")
+				fmt.Println("Play again")
+				break
+			}
 			
 			if (check_winner(matrix)==2){
 				fmt.Println("X won")

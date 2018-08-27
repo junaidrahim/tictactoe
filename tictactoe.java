@@ -23,6 +23,16 @@ class game{
         }
     }
 
+    // To check if the position is empty or not
+    boolean input_validity_check(int row, int col){
+        if(matrix[row][col]==' '){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     // To check the winner
     public int check_winner(){
         // Checks the diagonals
@@ -73,8 +83,18 @@ public class tictactoe{
                 String a = input.nextLine();
                 String[] player_input = a.split(" ");   // "1 0" -> ["1","0"] 
 
-                tictac.play('O', Integer.parseInt(player_input[0]), Integer.parseInt(player_input[1]));
-                tictac.print_game();
+                int row = Integer.parseInt(player_input[0]);
+                int col = Integer.parseInt(player_input[1]);
+
+                if(tictac.input_validity_check(row, col)){
+                    tictac.play('O', row, col);
+                    tictac.print_game();    
+                }
+                else {
+                    System.out.println("Invalid, that position is already taken");
+                    System.out.println("Play again");
+                    break;
+                }
                 
                 int result = tictac.check_winner();
                 if(result==1){
@@ -93,8 +113,18 @@ public class tictactoe{
                 String a = input.nextLine();
                 String[] player_input = a.split(" ");   // "0 0" -> ["0","0"] 
 
-                tictac.play('X', Integer.parseInt(player_input[0]), Integer.parseInt(player_input[1]));
-                tictac.print_game();
+                int row = Integer.parseInt(player_input[0]);
+                int col = Integer.parseInt(player_input[1]);
+
+                if(tictac.input_validity_check(row, col)){
+                    tictac.play('X', row, col);
+                    tictac.print_game();    
+                }
+                else {
+                    System.out.println("Invalid, that position is already taken");
+                    System.out.println("Play again");
+                    break;
+                }
                 
                 int result = tictac.check_winner();
                 if(result==1){
