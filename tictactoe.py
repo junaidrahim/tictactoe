@@ -30,6 +30,7 @@ def check_winner(game):
     return 0   # no winner
 
 
+# To check if the position is empty or not
 def input_validity_check(game, row, col):
     if game[row,col] == ' ':
         return True

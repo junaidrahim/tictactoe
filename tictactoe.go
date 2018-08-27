@@ -36,6 +36,7 @@ func check_winner(game [3][3]string) int {
 	return 0;
 }
 
+// To check if position is empty or not
 func input_validity_check(game [3][3]string, row int, col int) bool {
 	if (game[row][col]==" "){
 		return true

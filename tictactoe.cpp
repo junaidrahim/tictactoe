@@ -17,6 +17,7 @@ void printGame(char matrix[3][3]){
     }
 }
 
+// To check if position is empty or not
 bool input_validity_check(char game[3][3], int row, int col){
     if (game[row][col]==' '){
         return true;
