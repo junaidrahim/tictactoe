@@ -27,4 +27,6 @@ Hopefully will add more,
 <br>
 
 ## DEMO:
-<img src="rec.svg">
+<p align="center">
+    <img src="rec.svg">
+</p>
