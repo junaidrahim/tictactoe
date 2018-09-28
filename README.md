@@ -28,5 +28,5 @@ Hopefully will add more,
 
 ## DEMO:
 <p align="center">
-    <img src="rec.svg">
+    <img src="https://cdn.rawgit.com/junaidrahim/tictactoe/9b2fd810/rec.svg">
 </p>
