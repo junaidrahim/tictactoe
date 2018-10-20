@@ -30,3 +30,9 @@ Hopefully will add more,
 <p align="center">
     <img src="rec.svg">
 </p>
+
+## LICENSE
+
+Copyright (c) **Junaid Rahim**. All rights reserved.
+
+Licensed under the [MIT](LICENSE) License.
