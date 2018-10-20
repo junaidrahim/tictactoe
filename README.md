@@ -28,11 +28,11 @@ Hopefully will add more,
 
 ## DEMO:
 <p align="center">
-    <img src="rec.svg">
+    <img src="https://cdn.rawgit.com/junaidrahim/tictactoe/9b2fd810/rec.svg">
 </p>
-
 ## LICENSE
 
 Copyright (c) **Junaid Rahim**. All rights reserved.
 
 Licensed under the [MIT](LICENSE) License.
+
